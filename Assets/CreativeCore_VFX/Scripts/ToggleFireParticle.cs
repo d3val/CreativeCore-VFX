@@ -11,6 +11,7 @@ public class ToggleFireParticle : MonoBehaviour
     private ParticleSystem fireParticle;
     public ParticleSystem igniteParticle;
     public ParticleSystem extinguishParticle;
+    public ParticleSystem rainParticle;
     public GameObject pointLight;
 
     bool isPlaying = true;
@@ -30,10 +31,14 @@ public class ToggleFireParticle : MonoBehaviour
                 pointLight.SetActive(false);
                 if (extinguishParticle != null)
                     extinguishParticle.Play();
+                if (rainParticle != null)
+                    rainParticle.Play();
                 isPlaying = false;
             } 
             else
             {
+                if (rainParticle != null)
+                    rainParticle.Stop();
                 fireParticle.Play();
                 pointLight.SetActive(true);
                 if (igniteParticle != null)
